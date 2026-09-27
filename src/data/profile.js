@@ -42,10 +42,11 @@ export const experience = [
     points: [
       'Largest frontend contributor to DAAS, an IT-asset leasing platform: built the lease contract lifecycle (novation, extension, buyout, settlement), IFRS postings to SAP, and the PO → GRN flow.',
       'Built DAAS’s “Download Box” async export pipeline (queued jobs, status polling, time-limited links), which ended the browser freezes users hit on large reports.',
-      'Lead frontend developer on ezVMS, a vendor management system with buyer and supplier portals, across the core product and 3 client deployments: RFx, reverse auctions, procure-to-pay and quality modules.',
+      'Lead frontend developer on ezVMS, a vendor management system with buyer and supplier portals, across the core product and 4 client versions: RFx, reverse auctions, procure-to-pay and quality modules.',
       'Built ezNMS and ezNexus from the first commit: 7 monitoring dashboards, and a 14-module unified IT management platform with role-based navigation.',
       'Built the SLA/OLA, knowledge base and 8 ECharts dashboards for ezHelpDesk (ITSM), and the helpdesk/SLA module for an asset-management product used by 3 clients.',
-      'Worked across auth and security (Keycloak, JWT, SSO/SAML, MFA, idle-timeout logout), i18n, Azure Pipelines CI, and Spring Boot REST APIs for reports and master data.',
+      'On the Source-to-Pay platform, took the app to 7 languages, built sourcing-request, RFP and auction screens, and added session auto-logout with Keycloak.',
+      'Worked across auth and security (Keycloak, JWT, SSO/SAML, MFA), Azure Pipelines CI, and Spring Boot REST APIs for reports and master data.',
     ],
     tags: ['Angular 18', 'TypeScript', 'RxJS', 'ECharts', 'Keycloak', 'Azure Pipelines', 'Spring Boot'],
   },
@@ -135,7 +136,7 @@ export const projects = [
     id: 'ezvms',
     title: 'ezVMS — Vendor Management System',
     category: 'Professional',
-    client: '4 enterprise deployments · ezAtlas · Lead frontend developer',
+    client: 'Core product + 4 client versions · ezAtlas · Lead frontend developer',
     summary:
       'Buyer and supplier portals covering supplier onboarding, RFx and reverse auctions, purchase orders through invoices, and quality management. I joined on day two and became the top contributor across the core product and its client versions.',
     stack: ['Angular 18 Standalone', 'Dashonic', 'ECharts', 'ApexCharts', 'JWT', 'SSO / SAML', 'exceljs', 'jsPDF'],
@@ -150,7 +151,7 @@ export const projects = [
     details: [
       {
         heading: 'Scale',
-        body: 'Core product plus 3 client deployments in cement, manufacturing and electrical. 130–270 components per deployment across about 37 buyer and supplier modules.',
+        body: 'Core product plus 4 client versions in cement, manufacturing, electrical, education and cybersecurity. 130–270 components per version across about 37 buyer and supplier modules.',
       },
       {
         heading: 'Client-specific work',
@@ -160,6 +161,8 @@ export const projects = [
           'Supplier bulk upload with credential generation, and GRN upload',
           'Buyer KPI dashboard, purchase requisitions, RFP templates, helpdesk and vendor onboarding',
           'UI for AI-based document extraction',
+          'GSTIN validation and autofill through a reusable GST service',
+          'PO lifecycle fixes (direct PO, amend, approve, cancel, short-close) and session-timeout/token-refresh fixes',
         ],
       },
       {
@@ -243,18 +246,35 @@ export const projects = [
     ],
   },
   {
-    id: 's2p-genai',
-    title: 'Global Source-to-Pay & GenAI Contracts',
+    id: 's2p',
+    title: 'Source-to-Pay e-Procurement Platform',
     category: 'Professional',
-    client: 'MNC client · ezAtlas',
+    client: 'Global procurement product · ezAtlas · My first project',
     summary:
-      'Enterprise procurement platform with full-app internationalisation and generative-AI modules for contract creation and catalogue management.',
-    stack: ['Angular', 'i18n', 'Keycloak', 'ng-idle', 'REST APIs'],
+      'Enterprise sourcing and procurement app for buyers, vendors and approvers. It covers sourcing requests, RFP/RFQ with technical and commercial bids, negotiation, reverse auctions and reports. Version 2 added catalogue, cart, POs and contracts.',
+    stack: ['Angular 16', 'ngx-translate', 'Keycloak', 'RxJS', 'ApexCharts', 'xlsx', 'jsPDF'],
     highlights: [
-      'Rolled out i18n across the whole application for non-English regions',
-      'Optimised GenAI-driven contract creation and intelligent catalogue management',
-      'Idle-timeout auto-logout with HostListener and ng-idle for session compliance',
-      'Performance gains through refactoring and API tuning',
+      'Took the app multilingual: 7 languages (en, de, es, fr, hi, ja, zh), about 1,430 keys each, across 73 templates',
+      'Sourcing Request module: autosave, open/close, line items and date filters',
+      'RFP lifecycle (create, launch, modify, negotiation, sanction approval) and the RFP/SR/reminder email templates',
+      'Reverse-auction screens: bidding refresh, price discovery and auction reports',
+      'Session auto-logout: HostListener activity tracking, 20-minute inactivity timer, translated countdown warning and Keycloak logout',
+      'Resolved about 150 tracked bugs across sourcing, auctions, reports and dashboards',
+    ],
+    details: [
+      {
+        heading: 'Version 2 — order management',
+        body: [
+          'Catalogue with images, cart and wishlist',
+          'PO create, approval, view and preview rework',
+          'Non-commercial contracts and contract-status optimisation',
+          'Form redesign across vendor, user, company, budget and DOA masters',
+        ],
+      },
+      {
+        heading: 'Performance',
+        body: 'Search debouncing, fewer dashboard API calls, buyer-profile and contract-status optimisation, and inline styles moved into global SCSS.',
+      },
     ],
   },
   {
