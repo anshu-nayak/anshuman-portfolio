@@ -188,7 +188,7 @@ button { font: inherit; cursor: pointer; }
   .nav__links a { font-size: 1.125rem; padding: 14px 16px; color: var(--text); }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .nav__name { display: none; }
 }
 
