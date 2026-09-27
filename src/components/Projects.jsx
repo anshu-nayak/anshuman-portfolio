@@ -3,6 +3,7 @@ import { projects } from '../data/profile'
 import { ArrowIcon } from './Icons'
 import ProjectModal from './ProjectModal'
 import Section from './Section'
+import StatusBadge from './StatusBadge'
 
 export default function Projects() {
   const categories = useMemo(() => ['All', ...new Set(projects.map((p) => p.category))], [])
@@ -31,7 +32,10 @@ export default function Projects() {
         {visible.map((p) => (
           <article key={p.id} className="card project">
             <div className="project__top">
-              <span className={`badge badge--${p.category.toLowerCase()}`}>{p.category}</span>
+              <span className="project__badges">
+                <span className={`badge badge--${p.category.toLowerCase()}`}>{p.category}</span>
+                {p.status && <StatusBadge status={p.status} />}
+              </span>
               <span className="muted small">{p.client}</span>
             </div>
             <h3>{p.title}</h3>

@@ -235,6 +235,10 @@ button { font: inherit; cursor: pointer; }
 .badge--accent, .badge--professional { background: var(--accent-soft); color: var(--accent-text); }
 .badge--analytics { background: var(--green-soft); color: var(--green); }
 .badge--academic { background: var(--amber-soft); color: var(--amber); }
+.badge--personal { background: var(--bg-alt); color: var(--text); border: 1px solid var(--border); }
+.badge--status.is-done { background: var(--green-soft); color: var(--green); }
+.badge--status.is-wip { background: var(--amber-soft); color: var(--amber); }
+.project__badges { display: inline-flex; flex-wrap: wrap; gap: 6px; }
 
 .card {
   background: var(--surface);

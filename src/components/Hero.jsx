@@ -1,5 +1,5 @@
 import { profile } from '../data/profile'
-import { ArrowIcon, DownloadIcon, LinkedInIcon, MailIcon, PinIcon } from './Icons'
+import { ArrowIcon, DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon, PinIcon } from './Icons'
 
 export default function Hero() {
   return (
@@ -33,6 +33,11 @@ export default function Hero() {
             <a className="btn btn--icon" href={profile.contact.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <LinkedInIcon width={18} height={18} />
             </a>
+            {profile.contact.github && (
+              <a className="btn btn--icon" href={profile.contact.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+                <GitHubIcon width={18} height={18} />
+              </a>
+            )}
           </div>
         </div>
 

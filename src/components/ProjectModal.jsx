@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { CloseIcon } from './Icons'
+import { CloseIcon, GitHubIcon } from './Icons'
+import StatusBadge from './StatusBadge'
 
 export default function ProjectModal({ project, onClose }) {
   const ref = useRef(null)
@@ -23,7 +24,10 @@ export default function ProjectModal({ project, onClose }) {
       <div className="modal__body">
         <header className="modal__head">
           <div>
-            <span className={`badge badge--${project.category.toLowerCase()}`}>{project.category}</span>
+            <span className="project__badges">
+              <span className={`badge badge--${project.category.toLowerCase()}`}>{project.category}</span>
+              {project.status && <StatusBadge status={project.status} />}
+            </span>
             <h3 id="modal-title">{project.title}</h3>
             <p className="muted small">{project.client}</p>
           </div>
@@ -67,6 +71,7 @@ export default function ProjectModal({ project, onClose }) {
           <div className="modal__links">
             {project.links.map((l) => (
               <a key={l.url} className="btn" href={l.url} target="_blank" rel="noreferrer">
+                {l.url.includes('github.com') && <GitHubIcon width={18} height={18} />}
                 {l.label}
               </a>
             ))}

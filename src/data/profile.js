@@ -24,7 +24,7 @@ export const profile = {
     email: 'anshumannayak98@gmail.com',
     phone: '+91 7377939100', // set to null to hide it on the public site
     linkedin: 'https://www.linkedin.com/in/anshuman-nayak-82705213a',
-    github: null, // e.g. 'https://github.com/your-username'
+    github: 'https://github.com/anshu-nayak',
   },
   // Drop your CV in /public as resume.pdf and set this to 'resume.pdf'
   resumeUrl: null,
@@ -84,7 +84,8 @@ export const experience = [
   },
 ]
 
-// category: 'Professional' | 'Analytics' | 'Academic'
+// category: 'Professional' | 'Personal' | 'Analytics' | 'Academic'
+// status (optional): 'Completed' | 'In progress'
 // `details` is optional long-form content shown in the project dialog —
 // each entry is { heading, body } where body is a string or array of bullets.
 export const projects = [
@@ -152,6 +153,42 @@ export const projects = [
     ],
   },
   {
+    id: 'price-calculator-otel',
+    title: 'Price Calculator API with OpenTelemetry',
+    category: 'Personal',
+    status: 'Completed',
+    client: 'Personal project · Go',
+    summary:
+      'A Go REST API that calculates prices including tax, instrumented end to end with OpenTelemetry distributed tracing.',
+    stack: ['Go', 'Gorilla Mux', 'OpenTelemetry', 'OTLP', 'OTel Collector'],
+    highlights: [
+      'REST endpoints to set the base price and tax rate and to calculate the total',
+      'Every handler wrapped with otelhttp for automatic request tracing',
+      'Traces exported over OTLP/HTTP to an OpenTelemetry Collector with a custom config',
+      'Service resource attributes set with OTel semantic conventions',
+    ],
+    links: [{ label: 'View on GitHub', url: 'https://github.com/anshu-nayak/price-calculator-opentelementry' }],
+  },
+  {
+    id: 'aws-s3-cicd',
+    title: 'AWS S3 Static Website with Terraform & Jenkins',
+    category: 'Personal',
+    status: 'In progress',
+    client: 'Personal project · Cloud & DevOps',
+    summary:
+      'A static website hosted on Amazon S3, with the infrastructure provisioned by Terraform and deployments automated by a Jenkins CI/CD pipeline.',
+    stack: ['AWS S3', 'Terraform', 'Jenkins', 'AWS CLI', 'HTML/CSS/JS'],
+    highlights: [
+      'Infrastructure as Code: S3 website hosting defined in Terraform',
+      'Jenkinsfile pipeline that deploys website changes automatically',
+      'Build environment set up on Amazon Linux 2023 with Java 17 and Jenkins',
+    ],
+    links: [
+      { label: 'Terraform repo', url: 'https://github.com/anshu-nayak/AWS-Terraform' },
+      { label: 'Website repo', url: 'https://github.com/anshu-nayak/AWS-S3-Web_app' },
+    ],
+  },
+  {
     id: 'churn',
     title: 'Banking Customer Churn Analysis',
     category: 'Analytics',
@@ -199,6 +236,10 @@ export const skills = [
   {
     group: 'Backend',
     items: ['Java 17', 'Spring Boot 3', 'Spring Data JPA', 'REST APIs', 'PostgreSQL', 'Apache POI', 'OpenAPI / Swagger', 'Maven'],
+  },
+  {
+    group: 'Cloud & DevOps',
+    items: ['AWS S3', 'Terraform', 'Jenkins', 'Go', 'OpenTelemetry', 'Linux'],
   },
   {
     group: 'Dashboards & Reporting',
