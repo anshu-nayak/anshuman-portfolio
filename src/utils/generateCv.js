@@ -67,7 +67,7 @@ export async function downloadCv() {
   }
 
   const heading = (title) => {
-    ensure(14)
+    ensure(28) // keep the heading with the first entry below it
     y += 3
     setFont(11, 'bold', ACCENT)
     doc.text(title.toUpperCase(), M, y + 4)
@@ -80,7 +80,7 @@ export async function downloadCv() {
 
   // Title line on the left with a right-aligned date on the same baseline
   const titleRow = (left, right, size = 10.5) => {
-    ensure(lineH(size) + 2)
+    ensure(lineH(size) + 16) // keep the title with at least a couple of lines below it
     setFont(size, 'bold')
     const rightW = right ? doc.getTextWidth(clean(right)) + 4 : 0
     const lines = doc.splitTextToSize(clean(left), CONTENT_W - rightW)
