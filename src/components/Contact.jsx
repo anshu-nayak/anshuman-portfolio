@@ -1,5 +1,6 @@
 import { profile } from '../data/profile'
 import { GitHubIcon, LinkedInIcon, MailIcon, PhoneIcon } from './Icons'
+import DownloadCvButton from './DownloadCvButton'
 import Section from './Section'
 
 export default function Contact() {
@@ -16,6 +17,9 @@ export default function Contact() {
       <p className="contact__lead">
         I’m open to frontend engineering, data analytics and consulting roles, as well as freelance work and collaborations. The quickest way to reach me is email.
       </p>
+      <div className="contact__cta">
+        <DownloadCvButton className="btn btn--primary" label="Download my CV (PDF)" />
+      </div>
       <div className="grid grid--contact">
         {items.map((it) => (
           <a

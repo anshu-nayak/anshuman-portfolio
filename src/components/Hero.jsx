@@ -1,5 +1,6 @@
 import { profile } from '../data/profile'
-import { ArrowIcon, DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon, PinIcon } from './Icons'
+import DownloadCvButton from './DownloadCvButton'
+import { ArrowIcon, GitHubIcon, LinkedInIcon, MailIcon, PinIcon } from './Icons'
 
 export default function Hero() {
   return (
@@ -25,11 +26,7 @@ export default function Hero() {
             <a className="btn" href={`mailto:${profile.contact.email}`}>
               <MailIcon width={18} height={18} /> Email me
             </a>
-            {profile.resumeUrl && (
-              <a className="btn" href={profile.resumeUrl} download>
-                <DownloadIcon width={18} height={18} /> Résumé
-              </a>
-            )}
+            <DownloadCvButton />
             <a className="btn btn--icon" href={profile.contact.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <LinkedInIcon width={18} height={18} />
             </a>

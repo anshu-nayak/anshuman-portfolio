@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data/profile'
+import DownloadCvButton from './DownloadCvButton'
 import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from './Icons'
 
 const links = [
@@ -43,6 +44,7 @@ export default function Navbar({ theme, onToggleTheme }) {
         </nav>
 
         <div className="nav__actions">
+          <DownloadCvButton className="btn btn--primary btn--sm" label="CV" compact />
           <button
             className="icon-btn"
             onClick={onToggleTheme}

@@ -212,6 +212,12 @@ button { font: inherit; cursor: pointer; }
 .btn--primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn--primary:hover { filter: brightness(1.08); }
 .btn--icon { width: 44px; padding: 0; }
+.btn:disabled { opacity: 0.7; cursor: progress; transform: none; }
+.btn--sm { min-height: 40px; padding: 8px 14px; font-size: 0.9rem; }
+.contact__cta { margin-bottom: 24px; }
+@media (max-width: 480px) {
+  .contact__cta .btn { width: 100%; }
+}
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {
