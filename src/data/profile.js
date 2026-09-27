@@ -46,7 +46,8 @@ export const experience = [
       'Built ezNMS and ezNexus from the first commit: 7 monitoring dashboards, and a 14-module unified IT management platform with role-based navigation.',
       'Built the SLA/OLA, knowledge base and 8 ECharts dashboards for ezHelpDesk (ITSM), and the helpdesk/SLA module for an asset-management product used by 3 clients.',
       'On the Source-to-Pay platform, took the app to 7 languages, built sourcing-request, RFP and auction screens, and added session auto-logout with Keycloak.',
-      'Worked across auth and security (Keycloak, JWT, SSO/SAML, MFA), Azure Pipelines CI, and Spring Boot REST APIs for reports and master data.',
+      'Built the backend half of my own features in Java 17 / Spring Boot 3: about 50 DAAS reporting, dashboard and master-data endpoints, VMS client/project masters and reminder scheduler, and a cross-product SSO bridge used in 3 products.',
+      'Worked across auth and security (Keycloak, JWT, SSO/SAML, MFA) and set up Azure Pipelines CI for frontend and backend repos.',
     ],
     tags: ['Angular 18', 'TypeScript', 'RxJS', 'ECharts', 'Keycloak', 'Azure Pipelines', 'Spring Boot'],
   },
@@ -99,7 +100,7 @@ export const projects = [
     client: 'Enterprise IT clients · ezAtlas · Lead contributor',
     summary:
       'Enterprise IT-asset leasing platform covering procurement, the lease contract lifecycle, IFRS lease accounting postings to SAP, AP/AR schedules and reporting. I was the largest frontend contributor.',
-    stack: ['Angular 18', 'RxJS', 'Keycloak', 'Server-Sent Events', 'ngx-translate', 'ApexCharts', 'ECharts', 'xlsx', 'jsPDF'],
+    stack: ['Angular 18', 'RxJS', 'Keycloak', 'Server-Sent Events', 'ApexCharts', 'ECharts', 'Java 17', 'Spring Boot 3', 'Spring Data JPA', 'PostgreSQL', 'Apache POI'],
     highlights: [
       'Lease contract lifecycle: amendment, novation, extension, return, buyout, settlement and knock-off',
       'IFRS postings and AP journal entries with SSE-driven posting jobs, reversals and SAP export',
@@ -107,6 +108,7 @@ export const projects = [
       'PO → GRN flow with partial acceptance, serial-number sheets and exhibit-based GRN approval',
       'Worked on 35 AP/AR report screens and built 9 of them, with server-side search, pagination and Excel/PDF export',
       'Keycloak SSO with group- and role-based access on approval screens',
+      'Full stack: built the Spring Boot reporting, dashboard and master-data APIs behind my own screens (about 50 endpoints)',
     ],
     details: [
       {
@@ -130,6 +132,16 @@ export const projects = [
           'Security hardening (HTML-injection guards, 401 re-login loop fix) and Azure Pipelines multi-environment builds',
         ],
       },
+      {
+        heading: 'Backend (Java 17 / Spring Boot 3)',
+        body: [
+          'AP/AR reporting APIs: valuated contracts (RECESH), till-date OPEX, monthly revenue, contract approval, CMDB approval with dispute counts, GRN status/approval, PO report and PO–GRN reconciliation, built on JPQL projections, Specifications, batched lookups and paging',
+          'Dashboard KPI and chart endpoints, including assets over time, devices by lifecycle and category, lease term and contract expiry',
+          'Versioned mail-template and dispatch subsystem with history snapshots, rollback and placeholder validation',
+          'Interest-rate master upload: multi-sheet Excel parsing with Apache POI, with country and currency mapping',
+          'Master-data APIs for profit centre, division, WBS, business area and work centre, with case-insensitive duplicate checks and all-or-nothing bulk Excel import',
+        ],
+      },
     ],
   },
   {
@@ -139,7 +151,7 @@ export const projects = [
     client: 'Core product + 4 client versions · ezAtlas · Lead frontend developer',
     summary:
       'Buyer and supplier portals covering supplier onboarding, RFx and reverse auctions, purchase orders through invoices, and quality management. I joined on day two and became the top contributor across the core product and its client versions.',
-    stack: ['Angular 18 Standalone', 'Dashonic', 'ECharts', 'ApexCharts', 'JWT', 'SSO / SAML', 'exceljs', 'jsPDF'],
+    stack: ['Angular 18 Standalone', 'Dashonic', 'ECharts', 'ApexCharts', 'JWT', 'SSO / SAML', 'exceljs', 'Spring Boot 3', 'PostgreSQL'],
     highlights: [
       'Masters framework (UOM, category, item, tax, payment terms and more) with API integration',
       'RFx automation: Smart RFQ, auto-created reverse auctions with live ranking, and a process-trail audit view',
@@ -169,6 +181,15 @@ export const projects = [
         heading: 'Foundations',
         body: 'Shared services, directives, pipes and list/table components reused across all four deployments, plus Azure Pipelines CI with dev, UAT and prod configs.',
       },
+      {
+        heading: 'Backend (Spring Boot)',
+        body: [
+          'Client and Project masters (entities, REST APIs, paginated lists), carried through RFQ, sanction request, PR and PO',
+          'File storage service with upload, download and presigned links, behind a file API',
+          'Corrective-action (DPCAR) cancellation, plus a daily reminder scheduler that sends Thymeleaf HTML emails for due and overdue replies',
+          'Cross-product SSO bridge that provisions users and logs them into the helpdesk product. I wrote both sides, and it now runs in 3 products',
+        ],
+      },
     ],
   },
   {
@@ -192,7 +213,8 @@ export const projects = [
         body: [
           'Service layer for incidents, change requests, problems, SLA, OLA and knowledge',
           'Domain and Ticket Group masters, custom validators and input directives',
-          'SSO login with a token service, and Azure Pipelines CI',
+          'SSO login with a token service on the frontend, and the Spring Boot SSO service-provider login, password policy and client-domain support on the backend',
+          'Azure Pipelines CI',
           'Cleanup that removed legacy modules (about 75k lines) when the product was split from the asset-management codebase',
         ],
       },
@@ -370,7 +392,7 @@ export const skills = [
   },
   {
     group: 'Backend',
-    items: ['Python', 'Java 17', 'Spring Boot 3', 'Go', 'Spring Data JPA', 'REST APIs', 'PostgreSQL', 'Apache POI', 'OpenAPI / Swagger', 'Maven', 'OpenTelemetry'],
+    items: ['Python', 'Java 17', 'Spring Boot 3', 'Spring Data JPA', 'Spring Security (JWT)', 'REST APIs', 'PostgreSQL', 'Apache POI', 'Spring Mail + Thymeleaf', 'Scheduled jobs', 'OpenAPI / Swagger', 'Maven', 'Go', 'OpenTelemetry'],
   },
   // Hidden for now — Go and OpenTelemetry moved to Backend above.
   // {
