@@ -5,7 +5,9 @@ export const profile = {
   name: 'Anshuman Nayak',
   initials: 'AN',
   role: 'Frontend Engineer',
-  tagline: 'Angular · Enterprise Web Applications · Data & BI',
+  tagline: 'Angular · Enterprise Web Applications · Data Analytics & Consulting',
+  availability: 'Open to frontend, analytics & consulting roles',
+  photo: 'profile.jpg', // lives in /public
   location: 'Bengaluru, India',
   summary:
     'Frontend engineer with two years of experience building Angular applications for multinational clients in IT service management, asset management and procurement. I take features from first wireframe to production build, and I also contribute to the Spring Boot backend behind them. I moved into engineering from analytics, so I pay attention to what the data on a screen actually tells the person using it.',
@@ -169,25 +171,26 @@ export const projects = [
     ],
     links: [{ label: 'View on GitHub', url: 'https://github.com/anshu-nayak/price-calculator-opentelementry' }],
   },
-  {
-    id: 'aws-s3-cicd',
-    title: 'AWS S3 Static Website with Terraform & Jenkins',
-    category: 'Personal',
-    status: 'In progress',
-    client: 'Personal project · Cloud & DevOps',
-    summary:
-      'A static website hosted on Amazon S3, with the infrastructure provisioned by Terraform and deployments automated by a Jenkins CI/CD pipeline.',
-    stack: ['AWS S3', 'Terraform', 'Jenkins', 'AWS CLI', 'HTML/CSS/JS'],
-    highlights: [
-      'Infrastructure as Code: S3 website hosting defined in Terraform',
-      'Jenkinsfile pipeline that deploys website changes automatically',
-      'Build environment set up on Amazon Linux 2023 with Java 17 and Jenkins',
-    ],
-    links: [
-      { label: 'Terraform repo', url: 'https://github.com/anshu-nayak/AWS-Terraform' },
-      { label: 'Website repo', url: 'https://github.com/anshu-nayak/AWS-S3-Web_app' },
-    ],
-  },
+  // Hidden for now — uncomment to show the AWS / Terraform / Jenkins project again.
+  //   {
+  //     id: 'aws-s3-cicd',
+  //     title: 'AWS S3 Static Website with Terraform & Jenkins',
+  //     category: 'Personal',
+  //     status: 'In progress',
+  //     client: 'Personal project · Cloud & DevOps',
+  //     summary:
+  //       'A static website hosted on Amazon S3, with the infrastructure provisioned by Terraform and deployments automated by a Jenkins CI/CD pipeline.',
+  //     stack: ['AWS S3', 'Terraform', 'Jenkins', 'AWS CLI', 'HTML/CSS/JS'],
+  //     highlights: [
+  //       'Infrastructure as Code: S3 website hosting defined in Terraform',
+  //       'Jenkinsfile pipeline that deploys website changes automatically',
+  //       'Build environment set up on Amazon Linux 2023 with Java 17 and Jenkins',
+  //     ],
+  //     links: [
+  //       { label: 'Terraform repo', url: 'https://github.com/anshu-nayak/AWS-Terraform' },
+  //       { label: 'Website repo', url: 'https://github.com/anshu-nayak/AWS-S3-Web_app' },
+  //     ],
+  //   },
   {
     id: 'churn',
     title: 'Banking Customer Churn Analysis',
@@ -231,16 +234,24 @@ export const skills = [
   },
   {
     group: 'Security & Access',
-    items: ['Keycloak', 'OAuth2 / OIDC', 'JWT', 'RBAC', 'Session idle timeout', 'Permission-gated UI'],
+    items: [
+      'Keycloak',
+      'OAuth2 / OIDC',
+      'JWT',
+      // 'RBAC',
+      'Session idle timeout',
+      'Permission-gated UI',
+    ],
   },
   {
     group: 'Backend',
-    items: ['Java 17', 'Spring Boot 3', 'Spring Data JPA', 'REST APIs', 'PostgreSQL', 'Apache POI', 'OpenAPI / Swagger', 'Maven'],
+    items: ['Python', 'Java 17', 'Spring Boot 3', 'Go', 'Spring Data JPA', 'REST APIs', 'PostgreSQL', 'Apache POI', 'OpenAPI / Swagger', 'Maven', 'OpenTelemetry'],
   },
-  {
-    group: 'Cloud & DevOps',
-    items: ['AWS S3', 'Terraform', 'Jenkins', 'Go', 'OpenTelemetry', 'Linux'],
-  },
+  // Hidden for now — Go and OpenTelemetry moved to Backend above.
+  // {
+  //   group: 'Cloud & DevOps',
+  //   items: ['AWS S3', 'Terraform', 'Jenkins', 'Linux'],
+  // },
   {
     group: 'Dashboards & Reporting',
     items: ['ECharts', 'ApexCharts', 'Chart.js', 'SheetJS', 'jsPDF', 'Excel / CSV / PDF export'],
@@ -255,7 +266,17 @@ export const skills = [
   },
   {
     group: 'Tools & Process',
-    items: ['Git', 'Azure DevOps', 'CI/CD', 'Angular CLI', 'npm', 'Jasmine', 'Karma', 'Agile / Scrum', 'i18n'],
+    items: [
+      'Git',
+      'Azure DevOps',
+      'CI/CD',
+      'Angular CLI',
+      'npm',
+      // 'Jasmine',
+      // 'Karma',
+      'Agile / Scrum',
+      'i18n',
+    ],
   },
   {
     group: 'Domain',

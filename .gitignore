@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# original source photos (processed copy lives in public/)
+DSC_*.JPG

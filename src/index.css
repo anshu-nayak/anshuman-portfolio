@@ -154,7 +154,6 @@ button { font: inherit; cursor: pointer; }
 }
 
 .nav__actions { display: flex; gap: 6px; }
-.nav__menu { display: none; }
 
 .icon-btn {
   display: grid;
@@ -169,8 +168,11 @@ button { font: inherit; cursor: pointer; }
 }
 .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
 
+/* Hamburger only appears on small screens (declared after .icon-btn so it wins) */
+.icon-btn.nav__menu { display: none; }
+
 @media (max-width: 860px) {
-  .nav__menu { display: grid; }
+  .icon-btn.nav__menu { display: grid; }
   .nav__links {
     position: fixed;
     inset: var(--nav-h) 0 0 0;
@@ -376,6 +378,18 @@ button { font: inherit; cursor: pointer; }
   font-weight: 800;
   color: #fff;
   background: linear-gradient(135deg, var(--accent), #06b6d4);
+}
+.avatar--photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  object-position: center 20%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--accent), #06b6d4);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+@media (max-width: 480px) {
+  .avatar--photo { width: 128px; height: 128px; }
 }
 .hero__stats {
   width: 100%;

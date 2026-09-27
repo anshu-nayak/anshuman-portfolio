@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="container hero__inner">
         <div className="hero__text">
           <p className="hero__status">
-            <span className="dot" /> Open to frontend opportunities
+            <span className="dot" /> {profile.availability}
           </p>
           <h1>
             Hi, I’m {profile.name.split(' ')[0]}.
@@ -41,8 +41,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero__card" aria-hidden="true">
-          <div className="avatar">{profile.initials}</div>
+        <div className="hero__card">
+          {profile.photo ? (
+            <img className="avatar avatar--photo" src={profile.photo} alt={profile.name} width="160" height="160" />
+          ) : (
+            <div className="avatar" aria-hidden="true">{profile.initials}</div>
+          )}
           <div className="hero__stats">
             {profile.stats.map((s) => (
               <div key={s.label} className="stat">

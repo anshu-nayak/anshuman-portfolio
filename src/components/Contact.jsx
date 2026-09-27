@@ -14,7 +14,7 @@ export default function Contact() {
   return (
     <Section id="contact" eyebrow="Contact" title="Let’s work together" alt>
       <p className="contact__lead">
-        I’m open to frontend and full-stack roles, freelance work and collaborations. The quickest way to reach me is email.
+        I’m open to frontend engineering, data analytics and consulting roles, as well as freelance work and collaborations. The quickest way to reach me is email.
       </p>
       <div className="grid grid--contact">
         {items.map((it) => (
