@@ -2,6 +2,8 @@
 
 Personal portfolio covering my experience, projects, skills, education and certifications. It's built with React and Vite, has no backend or database, and works on phones, tablets and desktops, with a light/dark theme.
 
+**Live site:** https://anshu-nayak.github.io/anshuman-portfolio/
+
 ## Run locally
 
 ```bash
