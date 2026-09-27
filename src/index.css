@@ -99,11 +99,19 @@ button { font: inherit; cursor: pointer; }
   top: 0;
   z-index: 50;
   height: var(--nav-h);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+/* The blur lives on a pseudo-element: backdrop-filter on .nav itself would make it
+   the containing block for the fixed mobile menu, shrinking the menu to the nav's height */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: color-mix(in srgb, var(--bg) 80%, transparent);
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
 }
 .nav--scrolled { border-bottom-color: var(--border); }
 
@@ -180,6 +188,7 @@ button { font: inherit; cursor: pointer; }
     gap: 4px;
     padding: 16px;
     background: var(--bg);
+    overflow-y: auto;
     transform: translateX(100%);
     visibility: hidden;
     transition: transform 0.25s ease, visibility 0.25s;
