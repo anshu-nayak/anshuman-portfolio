@@ -44,7 +44,8 @@ export const experience = [
       'Built DAAS’s “Download Box” async export pipeline (queued jobs, status polling, time-limited links), which ended the browser freezes users hit on large reports.',
       'Lead frontend developer on ezVMS, a vendor management system with buyer and supplier portals, across the core product and 4 client versions: RFx, reverse auctions, procure-to-pay and quality modules.',
       'Built ezNMS and ezNexus from the first commit: 7 monitoring dashboards, and a 14-module unified IT management platform with role-based navigation.',
-      'Built the SLA/OLA, knowledge base and 8 ECharts dashboards for ezHelpDesk (ITSM), and the helpdesk/SLA module for an asset-management product used by 3 clients.',
+      'Built BEFIT / FITBOT on my own, end to end: a WhatsApp fitness assistant on the Meta Cloud API with signed webhooks and daily check-ins, an Angular 19 portal for members, organizations and admins, and the Spring Boot 3.5 API behind both.',
+      'Built the SLA/OLA, knowledge base and 8 ECharts dashboards for ezHelpDesk (ITSM), and rebuilt the helpdesk/SLA ticketing module in a client’s asset-management app.',
       'On the Source-to-Pay platform, took the app to 7 languages, built sourcing-request, RFP and auction screens, and added session auto-logout with Keycloak.',
       'Built the backend half of my own features in Java 17 / Spring Boot 3: about 50 DAAS reporting, dashboard and master-data endpoints, VMS client/project masters and reminder scheduler, and a cross-product SSO bridge used in 3 products.',
       'Worked across auth and security (Keycloak, JWT, SSO/SAML, MFA) and set up Azure Pipelines CI for frontend and backend repos.',
@@ -93,6 +94,48 @@ export const experience = [
 // `details` is optional long-form content shown in the project dialog —
 // each entry is { heading, body } where body is a string or array of bullets.
 export const projects = [
+  {
+    id: 'befit',
+    title: 'BEFIT / FITBOT — WhatsApp Fitness & Nutrition Platform',
+    category: 'Professional',
+    client: 'Product · ezAtlas · Built solo, full stack',
+    summary:
+      'Fitness and nutrition platform that members use through FITBOT, a WhatsApp assistant, and a web portal for members, organizations and admins. I built both halves on my own: the Angular 19 portal and the Spring Boot API with the WhatsApp Cloud API integration.',
+    stack: ['Angular 19', 'Signals', 'ECharts', 'Java 21', 'Spring Boot 3.5', 'Spring Data JPA', 'H2 / PostgreSQL', 'WhatsApp Cloud API', 'OpenAPI / Swagger', 'Azure Pipelines'],
+    highlights: [
+      'FITBOT on WhatsApp: menu, today’s plan, meals and workouts, and logging water, weight and sleep by text or one-tap buttons',
+      'Webhook with HMAC-SHA256 signature checks, the verify-token handshake and duplicate-delivery handling',
+      'Sign-in from WhatsApp: a one-time, 15-minute portal link bound to the member’s number, exchanged for a session after a consent screen',
+      'Daily 8 AM and 8 PM check-ins that respect WhatsApp’s 24-hour messaging window, with an approved template as the fallback',
+      '4-step nutritional assessment with draft autosave, wellness scoring and generated diet and workout plans',
+      'Member, organization and admin portals with dashboards, progress charts, consultations and QR codes that open the FITBOT chat',
+    ],
+    details: [
+      {
+        heading: 'Scope',
+        body: 'Sole developer on both repositories. 12 REST controllers with 36 endpoints over 15 JPA entities on the backend, and 67 standalone components in 12 lazy-loaded feature areas on the frontend.',
+      },
+      {
+        heading: 'Frontend (Angular 19)',
+        body: [
+          'Layered data access (UI → service → abstract gateway → HTTP or localStorage), switched by environment, so the same app runs as a backend-free client demo',
+          'Strict typed reactive forms, signals, guards for members, organizations, admins and consent, and auth/error interceptors',
+          'Mobile-first layouts with a bottom tab bar, skeleton loading states, and lazy-loaded ECharts with a colour-blind-safe palette and table view',
+          'Hash routing under /FITBOT/, so Tomcat serves it with no rewrite rules',
+        ],
+      },
+      {
+        heading: 'Backend (Java 21 / Spring Boot 3.5)',
+        body: [
+          'Opaque bearer tokens stored only as SHA-256 hashes, BCrypt admin passwords, and per-resource access rules for members, organization owners and admins',
+          'Portal events (sign-up, assessment, consultation bookings) confirmed on WhatsApp after the database commit',
+          'Wellness scoring and plan generation ported from the TypeScript rules, with a parity test against the frontend’s output',
+          'Input sanitising, phone numbers masked in logs, and error responses that never include stack traces',
+          '74 MockMvc integration and unit tests; packaged as a WAR and deployed to Tomcat through Azure Pipelines',
+        ],
+      },
+    ],
+  },
   {
     id: 'daas',
     title: 'DAAS — Device-as-a-Service Leasing Platform',
@@ -222,18 +265,19 @@ export const projects = [
   },
   {
     id: 'ams-helpdesk',
-    title: 'Asset Management — Helpdesk & SLA Module',
+    title: 'Helpdesk & SLA Module — Client Asset-Management App',
     category: 'Professional',
-    client: '3 client deployments · ezAtlas',
+    client: 'Client build · ezAtlas · Module owner',
     summary:
-      'Fixed-asset management platform covering the asset lifecycle, from GRN through allocation, transfer and maintenance to disposal and depreciation. I built its incident/helpdesk ticketing module and took it from first build to production in about five months.',
-    stack: ['Angular 18', 'Reactive Forms', 'ECharts', 'ng-select', 'Azure Pipelines'],
+      'Helpdesk ticketing module inside a client’s build of ezAtlas’s fixed-asset management app. Other developers built the asset-management product itself. I rebuilt the ticketing module, wrote about 90% of its current code, and took it to production between January and May 2026.',
+    stack: ['Angular 18', 'Reactive Forms', 'ECharts', 'ng-select', 'Spring Boot', 'Azure Pipelines'],
     highlights: [
       'Helpdesk ticketing: new ticket, list and detail views with dynamic tabbed forms, child incidents, activity history and attachments',
       'SLA policies with multi-level escalation matrices, timers, breach flags and P1–P4 priorities',
       'Ticketing overview dashboard with drill-down into incident reports (list/card views and export)',
       'Popup-based SSO login with route guards on ticketing screens',
       'Mail configuration, domain and ticket-group masters, and an end-user role guard',
+      'Backend changes in Spring Boot: incident list search and sort, and incident report date handling',
     ],
   },
   {
@@ -392,7 +436,7 @@ export const skills = [
   },
   {
     group: 'Backend',
-    items: ['Python', 'Java 17', 'Spring Boot 3', 'Spring Data JPA', 'Spring Security (JWT)', 'REST APIs', 'PostgreSQL', 'Apache POI', 'Spring Mail + Thymeleaf', 'Scheduled jobs', 'OpenAPI / Swagger', 'Maven', 'Go', 'OpenTelemetry'],
+    items: ['Python', 'Java 17 / 21', 'Spring Boot 3', 'Spring Data JPA', 'Spring Security (JWT)', 'REST APIs', 'PostgreSQL', 'Apache POI', 'Spring Mail + Thymeleaf', 'Scheduled jobs', 'OpenAPI / Swagger', 'Maven', 'WhatsApp Cloud API', 'Webhooks', 'Go', 'OpenTelemetry'],
   },
   // Hidden for now — Go and OpenTelemetry moved to Backend above.
   // {
