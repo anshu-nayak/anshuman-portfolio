@@ -13,7 +13,7 @@ export const profile = {
     'Frontend engineer with two years of experience building Angular applications for multinational clients in IT service management, asset management and procurement. I take features from first wireframe to production build, and I also contribute to the Spring Boot backend behind them. I moved into engineering from analytics, so I pay attention to what the data on a screen actually tells the person using it.',
   about: [
     'I build enterprise web apps that stay fast and secure at scale: IT-asset leasing with IFRS lease accounting, vendor portals with RFx and reverse auctions, ITSM suites with SLA tracking and knowledge bases, and network-monitoring dashboards.',
-    'I built two products from the first commit (ezNMS and ezNexus) on Angular standalone architecture, and I was the lead frontend contributor on two more (DAAS and ezVMS), which run across several enterprise client deployments.',
+    'I started two products from the first commit (ezNMS and ezNexus) on Angular standalone architecture, built a third (BEFIT) on my own from frontend to backend, and I am the largest frontend contributor on two more (DAAS and ezVMS), which run across several enterprise client deployments.',
     'My background is in agricultural engineering, an MBA in agribusiness and a PG program in business analytics. That path pushes me to work out the business problem before I start writing code.',
   ],
   stats: [
@@ -40,15 +40,15 @@ export const experience = [
     period: 'Oct 2024 – Present',
     current: true,
     points: [
-      'Largest frontend contributor to DAAS, an IT-asset leasing platform: built the lease contract lifecycle (novation, extension, buyout, settlement), IFRS postings to SAP, and the PO → GRN flow.',
-      'Built DAAS’s “Download Box” async export pipeline (queued jobs, status polling, time-limited links), which ended the browser freezes users hit on large reports.',
-      'Lead frontend developer on ezVMS, a vendor management system with buyer and supplier portals, across the core product and 4 client versions: RFx, reverse auctions, procure-to-pay and quality modules.',
-      'Built ezNMS and ezNexus from the first commit: 7 monitoring dashboards, and a 14-module unified IT management platform with role-based navigation.',
+      'Largest frontend contributor to DAAS, an IT-asset leasing platform (about 44% of commits): built contract novation, PO amendments, the IFRS posting screens and GRN approval, and split the extension, return, buyout and settlement flow into separate screens.',
+      'Built the frontend of DAAS’s “Download Box”: report exports run in the background, and users collect them from one panel that shows their quota and when each link expires. Wired into about 35 export screens.',
+      'Lead frontend developer on ezVMS, a vendor management system with buyer and supplier portals: top contributor to the core product and main frontend developer on two of its five client versions, across RFx, reverse auctions, procure-to-pay and quality modules.',
+      'Made the first commit on ezNMS and ezNexus: built ezNMS’s 7 monitoring dashboards, and assembled ezNexus, a 14-module IT management platform with role-based navigation, from new code and modules reused from our other products.',
       'Built BEFIT / FITBOT on my own, end to end: a WhatsApp fitness assistant on the Meta Cloud API with signed webhooks and daily check-ins, an Angular 19 portal for members, organizations and admins, and the Spring Boot 3.5 API behind both.',
       'Built the SLA/OLA, knowledge base and 8 ECharts dashboards for ezHelpDesk (ITSM), and rebuilt the helpdesk/SLA ticketing module in a client’s asset-management app.',
-      'On the Source-to-Pay platform, took the app to 7 languages, built sourcing-request, RFP and auction screens, and added session auto-logout with Keycloak.',
-      'Built the backend half of my own features in Java 17 / Spring Boot 3: about 50 DAAS reporting, dashboard and master-data endpoints, VMS client/project masters and reminder scheduler, and a cross-product SSO bridge used in 3 products.',
-      'Worked across auth and security (Keycloak, JWT, SSO/SAML, MFA) and set up Azure Pipelines CI for frontend and backend repos.',
+      'On the Source-to-Pay platform, took the app to 7 languages, fixed and extended the sourcing-request, RFP and auction screens, and added session auto-logout with Keycloak.',
+      'Built the backend half of my own features in Java 17 / Spring Boot 3: about 50 DAAS reporting, dashboard and master-data endpoints, VMS client/project masters and a reminder scheduler, and an SSO bridge that logs VMS users into the helpdesk product.',
+      'Worked on auth across products (Keycloak, JWT refresh, Azure AD SSO) and set up Azure Pipelines CI for 14 frontend and 2 backend repos.',
     ],
     tags: ['Angular 18', 'TypeScript', 'RxJS', 'ECharts', 'Keycloak', 'Azure Pipelines', 'Spring Boot'],
   },
@@ -140,28 +140,28 @@ export const projects = [
     id: 'daas',
     title: 'DAAS — Device-as-a-Service Leasing Platform',
     category: 'Professional',
-    client: 'Enterprise IT clients · ezAtlas · Lead contributor',
+    client: 'Enterprise IT clients · ezAtlas · Largest frontend contributor',
     summary:
-      'Enterprise IT-asset leasing platform covering procurement, the lease contract lifecycle, IFRS lease accounting postings to SAP, AP/AR schedules and reporting. I was the largest frontend contributor.',
-    stack: ['Angular 18', 'RxJS', 'Keycloak', 'Server-Sent Events', 'ApexCharts', 'ECharts', 'Java 17', 'Spring Boot 3', 'Spring Data JPA', 'PostgreSQL', 'Apache POI'],
+      'Enterprise IT-asset leasing platform covering procurement, the lease contract lifecycle, IFRS lease accounting postings to SAP, AP/AR schedules and reporting. I am the largest frontend contributor, with about 44% of the commits.',
+    stack: ['Angular 18', 'RxJS', 'Keycloak', 'Server-Sent Events', 'ECharts', 'Java 17', 'Spring Boot 3', 'Spring Data JPA', 'PostgreSQL', 'Apache POI'],
     highlights: [
-      'Lease contract lifecycle: amendment, novation, extension, return, buyout, settlement and knock-off',
-      'IFRS postings and AP journal entries with SSE-driven posting jobs, reversals and SAP export',
-      '“Download Box” async export pipeline with queued jobs, status polling, per-user quotas and time-limited download links',
-      'PO → GRN flow with partial acceptance, serial-number sheets and exhibit-based GRN approval',
-      'Worked on 35 AP/AR report screens and built 9 of them, with server-side search, pagination and Excel/PDF export',
+      'AP lease lifecycle: built novation and PO amendments, and split extension, return, buyout, settlement and knock-off into separate screens that I extended',
+      'IFRS posting and AP journal-entry screens, with live SSE progress for posting jobs, reversals and SAP export',
+      '“Download Box” for background exports (frontend): job list, per-user quota display and expiring download links, wired into about 35 export screens',
+      'PO → GRN: PO amendments, GRN approval with partial acceptance and serial numbers, and exhibit-based GRN approval',
+      'Worked on 24 of the 38 AP/AR report screens and built 9 of them, with server-side search, pagination and Excel export',
       'Keycloak SSO with group- and role-based access on approval screens',
       'Full stack: built the Spring Boot reporting, dashboard and master-data APIs behind my own screens (about 50 endpoints)',
     ],
     details: [
       {
         heading: 'Scope',
-        body: 'Largest contributor to the frontend, with about 44% of commits. I built 90+ components and 50+ services, and brought the platform to multiple enterprise clients with per-client branding and environment builds.',
+        body: 'Largest contributor to the frontend, with about 44% of commits. I built about 80 components and 50 services, and set up the second client deployment with its own branding, Keycloak realm and environment builds.',
       },
       {
         heading: 'Lease accounting',
         body: [
-          'Present-value, lease-schedule and AR calculators with schedule generation and interest-rate tolerance checks',
+          'Present-value, lease-schedule and AR-schedule calculator screens, and the interest-rate tolerance check on lease extensions',
           'Multi-currency schedules and exports driven by effective-dated exchange rates',
           'IFRS report, monthly GL report and SAP GRN posting',
         ],
@@ -169,7 +169,7 @@ export const projects = [
       {
         heading: 'Also built',
         body: [
-          'Activity-freeze windows with enforcement and email notifications',
+          'Activity-freeze window screens (schedules, status and audit)',
           'Demand forecast, catalogue/marketplace, store requests and non-inventory POs',
           'Inventory, receipts, delivery and AP/AR dashboards with drill-throughs, asset ageing and lease-expiry views',
           'Security hardening (HTML-injection guards, 401 re-login loop fix) and Azure Pipelines multi-environment builds',
@@ -179,7 +179,7 @@ export const projects = [
         heading: 'Backend (Java 17 / Spring Boot 3)',
         body: [
           'AP/AR reporting APIs: valuated contracts (RECESH), till-date OPEX, monthly revenue, contract approval, CMDB approval with dispute counts, GRN status/approval, PO report and PO–GRN reconciliation, built on JPQL projections, Specifications, batched lookups and paging',
-          'Dashboard KPI and chart endpoints, including assets over time, devices by lifecycle and category, lease term and contract expiry',
+          'Dashboard KPI and chart endpoints, including assets over time and devices by lifecycle and category',
           'Versioned mail-template and dispatch subsystem with history snapshots, rollback and placeholder validation',
           'Interest-rate master upload: multi-sheet Excel parsing with Apache POI, with country and currency mapping',
           'Master-data APIs for profit centre, division, WBS, business area and work centre, with case-insensitive duplicate checks and all-or-nothing bulk Excel import',
@@ -191,22 +191,22 @@ export const projects = [
     id: 'ezvms',
     title: 'ezVMS — Vendor Management System',
     category: 'Professional',
-    client: 'Core product + 4 client versions · ezAtlas · Lead frontend developer',
+    client: 'Core product + 5 client versions · ezAtlas · Lead frontend developer',
     summary:
-      'Buyer and supplier portals covering supplier onboarding, RFx and reverse auctions, purchase orders through invoices, and quality management. I joined on day two and became the top contributor across the core product and its client versions.',
-    stack: ['Angular 18 Standalone', 'Dashonic', 'ECharts', 'ApexCharts', 'JWT', 'SSO / SAML', 'exceljs', 'Spring Boot 3', 'PostgreSQL'],
+      'Buyer and supplier portals covering supplier onboarding, RFx and reverse auctions, purchase orders through invoices, and quality management. I joined on day two and became the top contributor to the core product and the main frontend developer on two of its client versions.',
+    stack: ['Angular 18 Standalone', 'Dashonic', 'ECharts', 'JWT', 'Azure AD SSO', 'SheetJS (xlsx)', 'Spring Boot 3', 'PostgreSQL'],
     highlights: [
       'Masters framework (UOM, category, item, tax, payment terms and more) with API integration',
       'RFx automation: Smart RFQ, auto-created reverse auctions with live ranking, and a process-trail audit view',
       'Procure-to-pay: PO amend, short-close and cancel, delivery schedules, ASN, inward, e-way bill and invoices on both portals',
-      'Auth: JWT with token refresh, SSO/SAML, MFA, account lock and inactivity auto-logout',
+      'Auth: JWT with token refresh, Azure AD SSO login, account lock and inactivity auto-logout',
       'Quality modules: step-wise corrective-action (DPCAR) workflows, SQA and supplier audits',
       'Forecast dashboard, first prototyped as a solo build and then merged into the product',
     ],
     details: [
       {
         heading: 'Scale',
-        body: 'Core product plus 4 client versions in cement, manufacturing, electrical, education and cybersecurity. 130–270 components per version across about 37 buyer and supplier modules.',
+        body: 'Core product plus 5 client versions in cement, manufacturing, electrical, education and cybersecurity. About 100–320 components per version across about 37 buyer and supplier modules.',
       },
       {
         heading: 'Client-specific work',
@@ -222,7 +222,7 @@ export const projects = [
       },
       {
         heading: 'Foundations',
-        body: 'Shared services, directives, pipes and list/table components reused across all four deployments, plus Azure Pipelines CI with dev, UAT and prod configs.',
+        body: 'Shared services, directives, pipes and list/table components reused across the client versions, plus Azure Pipelines CI with dev, UAT and prod configs.',
       },
       {
         heading: 'Backend (Spring Boot)',
@@ -230,7 +230,7 @@ export const projects = [
           'Client and Project masters (entities, REST APIs, paginated lists), carried through RFQ, sanction request, PR and PO',
           'File storage service with upload, download and presigned links, behind a file API',
           'Corrective-action (DPCAR) cancellation, plus a daily reminder scheduler that sends Thymeleaf HTML emails for due and overdue replies',
-          'Cross-product SSO bridge that provisions users and logs them into the helpdesk product. I wrote both sides, and it now runs in 3 products',
+          'SSO bridge that provisions VMS users and logs them into the helpdesk product. I wrote both sides, and it runs in 3 VMS deployments',
         ],
       },
     ],
@@ -242,7 +242,7 @@ export const projects = [
     client: 'ITSM product · ezAtlas',
     summary:
       'ITIL-aligned service management suite, plus a lighter standalone ticketing portal. I built its SLA/OLA, knowledge base and dashboard modules and later maintained the ticketing portal on my own.',
-    stack: ['Angular 18', 'ECharts', 'ng-bootstrap', 'RxJS', 'jsPDF', 'xlsx'],
+    stack: ['Angular 18', 'ECharts', 'ngx-echarts', 'Reactive Forms', 'ng-bootstrap', 'RxJS'],
     highlights: [
       'SLA/OLA module: global and client-specific SLAs, business hours, escalation, penalties, breach register and compliance',
       '8 ECharts dashboards: executive, NOC (role-based), SLA, incident, change, problem, knowledge and ticketing overviews',
@@ -254,10 +254,10 @@ export const projects = [
       {
         heading: 'Also built',
         body: [
-          'Service layer for incidents, change requests, problems, SLA, OLA and knowledge',
+          'Service layer for incidents, SLA, OLA and knowledge, plus the dashboard APIs for change requests and problems',
           'Domain and Ticket Group masters, custom validators and input directives',
-          'SSO login with a token service on the frontend, and the Spring Boot SSO service-provider login, password policy and client-domain support on the backend',
-          'Azure Pipelines CI',
+          'SSO login with a token service and a password-change screen on the frontend, and the Spring Boot SSO service-provider login and client-domain support on the backend',
+          'Azure Pipelines CI for both frontend repos',
           'Cleanup that removed legacy modules (about 75k lines) when the product was split from the asset-management codebase',
         ],
       },
@@ -284,30 +284,30 @@ export const projects = [
     id: 'eznexus',
     title: 'ezNexus — Unified IT Management Platform',
     category: 'Professional',
-    client: 'Next-gen product · ezAtlas · Built from scratch',
+    client: 'Next-gen product · ezAtlas · Built from the first commit',
     summary:
-      'A single Angular app that brings ITOM, ITSM, ITAM, SLA, leasing, purchase requests, risk, projects and analytics together under one shell with role-based navigation. I made the initial commit and wrote nearly all of the code.',
-    stack: ['Angular 18 Standalone', 'Functional interceptors', 'ECharts', 'ApexCharts', 'Leaflet', 'FullCalendar'],
+      'A single Angular app that brings ITOM, ITSM, ITAM, SLA, leasing, purchase requests, risk, projects and analytics together under one shell with role-based navigation. I made the initial commit and nearly every commit after it. About half the code is new; the rest is modules from our DAAS, asset-management and ezNMS codebases that I integrated.',
+    stack: ['Angular 18 Standalone', 'Functional interceptors', 'ECharts', 'ApexCharts', 'FullCalendar'],
     highlights: [
-      '14 lazy-loaded domain modules, about 320 standalone components and a central navigation config',
-      'Auth, no-auth and role guards, plus auth and error HTTP interceptors',
-      'ITOM: discovery, servers, alerts, network, APM, CMDB, patch, compliance, capacity and maintenance',
-      'ITAM: assets, transfers, audit, depreciation, warranty and software',
-      'Offline demo mode: an HTTP interceptor serves seeded data from browser storage for client demos',
+      '14 lazy-loaded route groups, about 320 standalone components and a central navigation config',
+      'Functional auth and error HTTP interceptors, and an auth guard on the app shell',
+      'ITOM screens (discovery, servers, alerts, network, APM, patch, compliance, capacity and maintenance) as prototypes, plus a CMDB with device details',
+      'ITAM: integrated our existing transfer, audit and depreciation flows and added asset, software and warranty screens',
+      'Offline demo mode for ITSM: an HTTP interceptor serves seeded data from browser storage for client demos',
     ],
   },
   {
     id: 'eznms',
     title: 'ezNMS — Network & IT Operations Monitoring',
     category: 'Professional',
-    client: 'Product · ezAtlas · Built from scratch',
+    client: 'Product · ezAtlas · Built from the first commit',
     summary:
-      'Network and IT-operations monitoring frontend that I built from the first commit on the Dashonic template with Angular standalone components. Later it absorbed ticketing, masters, leasing and SLA modules.',
-    stack: ['Angular 18', 'Dashonic', 'ECharts', 'ApexCharts', 'Maps'],
+      'Network and IT-operations monitoring frontend that I started from the first commit on the Dashonic template with Angular standalone components. It later grew into a wider product: I merged in ticketing and leasing modules from our other products, and teammates added the asset-management base, SLA setup and masters.',
+    stack: ['Angular 18', 'Dashonic', 'ECharts (incl. geo maps)'],
     highlights: [
       '7 monitoring dashboards: network, server performance, traffic, devices, cloud, patches and certificates',
       'Agent management with shared table, pagination and modal components',
-      'SLA dashboards (commercial, operations and governance) with KPI, measurement and penalty forms',
+      'SLA dashboards and commercial, operations and governance screens, plus API services wiring the KPI, measurement and penalty forms',
       'App foundation (layout, login, routing), Azure Pipelines CI and environment configs',
     ],
   },
@@ -320,20 +320,20 @@ export const projects = [
       'Enterprise sourcing and procurement app for buyers, vendors and approvers. It covers sourcing requests, RFP/RFQ with technical and commercial bids, negotiation, reverse auctions and reports. Version 2 added catalogue, cart, POs and contracts.',
     stack: ['Angular 16', 'ngx-translate', 'Keycloak', 'RxJS', 'ApexCharts', 'xlsx', 'jsPDF'],
     highlights: [
-      'Took the app multilingual: 7 languages (en, de, es, fr, hi, ja, zh), about 1,430 keys each, across 73 templates',
-      'Sourcing Request module: autosave, open/close, line items and date filters',
-      'RFP lifecycle (create, launch, modify, negotiation, sanction approval) and the RFP/SR/reminder email templates',
-      'Reverse-auction screens: bidding refresh, price discovery and auction reports',
-      'Session auto-logout: HostListener activity tracking, 20-minute inactivity timer, translated countdown warning and Keycloak logout',
-      'Resolved about 150 tracked bugs across sourcing, auctions, reports and dashboards',
+      'Took the app multilingual: 7 languages (en, de, es, fr, hi, ja, zh), about 1,350 keys each, across about 70 templates',
+      'Sourcing requests: added form autosave and open/closed SR report views, and fixed line-item and date-filter issues',
+      'Fixes and changes across the RFP flow (create, launch, modify, negotiation, sanction approval); reworked the SR and RFP email templates and added reminder and cancellation mails',
+      'Reverse auctions: bidding-info refresh, auction report fields and price-discovery report filters',
+      'Session auto-logout: HostListener activity tracking, a 19-minute inactivity timer with a 15-second translated countdown, then Keycloak logout',
+      'Resolved about 140 tracked bugs across sourcing, auctions, reports and dashboards',
     ],
     details: [
       {
         heading: 'Version 2 — order management',
         body: [
-          'Catalogue with images, cart and wishlist',
+          'Reworked the catalogue (image display), cart and wishlist',
           'PO create, approval, view and preview rework',
-          'Non-commercial contracts and contract-status optimisation',
+          'Reworked the commercial and non-commercial contract forms, and added contract active/expired status in the catalogue',
           'Form redesign across vendor, user, company, budget and DOA masters',
         ],
       },
@@ -356,7 +356,7 @@ export const projects = [
       'REST endpoints to set the base price and tax rate and to calculate the total',
       'Every handler wrapped with otelhttp for automatic request tracing',
       'Traces exported over OTLP/HTTP to an OpenTelemetry Collector with a custom config',
-      'Service resource attributes set with OTel semantic conventions',
+      'Service name set with OTel semantic conventions; traces viewed in Jaeger',
     ],
     links: [{ label: 'View on GitHub', url: 'https://github.com/anshu-nayak/price-calculator-opentelementry' }],
   },
@@ -427,8 +427,7 @@ export const skills = [
       'Keycloak',
       'OAuth2 / OIDC',
       'JWT',
-      'SSO / SAML',
-      'MFA',
+      'SSO (Azure AD)',
       // 'RBAC',
       'Session idle timeout',
       'Permission-gated UI',
@@ -436,7 +435,7 @@ export const skills = [
   },
   {
     group: 'Backend',
-    items: ['Python', 'Java 17 / 21', 'Spring Boot 3', 'Spring Data JPA', 'Spring Security (JWT)', 'REST APIs', 'PostgreSQL', 'Apache POI', 'Spring Mail + Thymeleaf', 'Scheduled jobs', 'OpenAPI / Swagger', 'Maven', 'WhatsApp Cloud API', 'Webhooks', 'Go', 'OpenTelemetry'],
+    items: ['Java 17 / 21', 'Spring Boot 3', 'Spring Data JPA', 'Spring Security (JWT)', 'REST APIs', 'PostgreSQL', 'Apache POI', 'Spring Mail + Thymeleaf', 'Scheduled jobs', 'OpenAPI / Swagger', 'Maven', 'WhatsApp Cloud API', 'Webhooks', 'Go', 'OpenTelemetry'],
   },
   // Hidden for now — Go and OpenTelemetry moved to Backend above.
   // {
@@ -445,11 +444,11 @@ export const skills = [
   // },
   {
     group: 'Dashboards & Reporting',
-    items: ['ECharts', 'ApexCharts', 'Chart.js', 'Leaflet', 'SheetJS', 'ExcelJS', 'jsPDF', 'Excel / CSV / PDF export'],
+    items: ['ECharts', 'ApexCharts', 'SheetJS', 'jsPDF', 'Excel / CSV / PDF export'],
   },
   {
     group: 'Analytics',
-    items: ['Power BI', 'Tableau', 'SAS', 'Orange', 'SQL', 'MS Excel', 'Forecasting'],
+    items: ['Power BI', 'Tableau', 'SAS', 'Orange', 'Python', 'SQL', 'MS Excel', 'Forecasting'],
   },
   {
     group: 'AI Tooling',
