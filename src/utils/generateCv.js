@@ -8,6 +8,12 @@ const PAGE_H = 297
 const M = 16 // page margin (mm)
 const CONTENT_W = PAGE_W - M * 2
 
+// The site shows everything; the CV is trimmed to stay at about two pages
+const DETAILED_JOBS = 1 // most recent jobs that keep their bullets; older roles get one line each
+const CV_CATEGORIES = ['Professional', 'Personal'] // Analytics/Academic work is already in the Education notes
+const CV_HIGHLIGHTS = { Professional: 0, Personal: 2 } // work projects are already told in the experience bullets
+const CV_STACK = 6 // stack items per project
+
 const ACCENT = [79, 70, 229]
 const TEXT = [15, 23, 42]
 const MUTED = [91, 100, 119]
@@ -76,6 +82,25 @@ export async function downloadCv() {
     doc.setLineWidth(0.3)
     doc.line(M, y, PAGE_W - M, y)
     y += 3
+  }
+
+  // Bold label followed by wrapped text, e.g. "Frontend: Angular 18, TypeScript, ..."
+  const labelRow = (label, text) => {
+    setFont(9.5, 'bold')
+    const labelText = `${clean(label)}: `
+    const labelW = doc.getTextWidth(labelText) + 1.2
+    setFont(9.5)
+    const lines = doc.splitTextToSize(clean(text), CONTENT_W - labelW)
+    ensure(lineH(9.5) * lines.length)
+    setFont(9.5, 'bold')
+    doc.text(labelText, M, y + lineH(9.5) * 0.8)
+    setFont(9.5)
+    lines.forEach((ln, i) => {
+      doc.text(ln, M + labelW, y + lineH(9.5) * 0.8)
+      y += lineH(9.5)
+      if (i === 0 && lines.length > 1) ensure(lineH(9.5))
+    })
+    y += 1
   }
 
   // Title line on the left with a right-aligned date on the same baseline
@@ -149,27 +174,15 @@ export async function downloadCv() {
 
   // ---------- Skills ----------
   heading('Technical Skills')
-  skills.forEach((g) => {
-    setFont(9.5, 'bold')
-    const label = `${clean(g.group)}: `
-    const labelW = doc.getTextWidth(label) + 1.2
-    setFont(9.5)
-    const lines = doc.splitTextToSize(clean(g.items.join(', ')), CONTENT_W - labelW)
-    ensure(lineH(9.5) * lines.length)
-    setFont(9.5, 'bold')
-    doc.text(label, M, y + lineH(9.5) * 0.8)
-    setFont(9.5)
-    lines.forEach((ln, i) => {
-      doc.text(ln, M + labelW, y + lineH(9.5) * 0.8)
-      y += lineH(9.5)
-      if (i === 0 && lines.length > 1) ensure(lineH(9.5))
-    })
-    y += 1
-  })
+  skills.forEach((g) => labelRow(g.group, g.items.join(', ')))
 
   // ---------- Experience ----------
   heading('Professional Experience')
-  experience.forEach((job) => {
+  experience.forEach((job, i) => {
+    if (i >= DETAILED_JOBS) {
+      titleRow(`${job.role} - ${job.company}`, job.period, 10)
+      return
+    }
     titleRow(job.role, job.period)
     paragraph(`${job.company}  ·  ${job.location}`, { size: 9.5, color: MUTED, gap: 1 })
     job.points.forEach((p) => bullet(p))
@@ -178,11 +191,16 @@ export async function downloadCv() {
 
   // ---------- Projects ----------
   heading('Key Projects')
-  projects.forEach((p) => {
+  projects.filter((p) => CV_CATEGORIES.includes(p.category)).forEach((p) => {
+    if (!CV_HIGHLIGHTS[p.category]) {
+      // Role and client are already in the experience bullets, so just the title and stack
+      titleRow(p.title, null, 9.5)
+      paragraph(p.stack.slice(0, CV_STACK).join(', '), { size: 8.5, style: 'italic', color: MUTED, gap: 1.5 })
+      return
+    }
     titleRow(p.title, p.status ? `${p.category} · ${p.status}` : p.category, 10)
-    paragraph(`${p.client}  ·  ${p.stack.join(', ')}`, { size: 8.5, style: 'italic', color: MUTED, gap: 1 })
-    paragraph(p.summary, { gap: 1 })
-    p.highlights.forEach((h) => bullet(h, 9))
+    paragraph(`${p.client}  ·  ${p.stack.slice(0, CV_STACK).join(', ')}`, { size: 8.5, style: 'italic', color: MUTED, gap: 1 })
+    p.highlights.slice(0, CV_HIGHLIGHTS[p.category]).forEach((h) => bullet(h, 9))
     p.links?.forEach((l) => {
       setFont(8.5, 'normal', ACCENT)
       ensure(lineH(8.5))
@@ -200,18 +218,12 @@ export async function downloadCv() {
     if (e.note) paragraph(e.note, { size: 9, gap: 2 })
   })
 
-  // ---------- Certifications & Publications ----------
-  heading('Certifications')
-  certifications.forEach((c) => bullet(`${c.title} - ${c.issuer}`, 9.5))
-
-  if (publications.length) {
-    heading('Publications')
-    publications.forEach((p) => bullet(`${p.title} - ${p.venue}`, 9.5))
-  }
-
-  // ---------- Languages ----------
-  heading('Languages')
-  paragraph(languages.map((l) => `${l.name} - ${l.level}`).join('   |   '))
+  // ---------- Certifications, Publications & Languages ----------
+  heading('Certifications & Languages')
+  certifications.forEach((c) => bullet(`${c.title} - ${c.issuer}`, 9))
+  y += 1
+  if (publications.length) labelRow('Publication', publications.map((p) => `${p.title} - ${p.venue}`).join('; '))
+  labelRow('Languages', languages.map((l) => `${l.name} - ${l.level}`).join('   |   '))
 
   // ---------- Footer: page numbers ----------
   const pages = doc.getNumberOfPages()
