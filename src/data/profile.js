@@ -448,7 +448,7 @@ export const skills = [
   },
   {
     group: 'Analytics',
-    items: ['Power BI', 'Tableau', 'SAS', 'Orange', 'Python', 'SQL', 'MS Excel', 'Forecasting'],
+    items: ['Power BI', 'Tableau', 'SAS', 'Orange', 'SQL', 'MS Excel', 'Forecasting'],
   },
   {
     group: 'AI Tooling',
